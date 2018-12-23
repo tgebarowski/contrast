@@ -1,0 +1,68 @@
+KB
+	UNIVERSE inclinationAngle
+		SET muchLeft	-3.1416  -3.1416  -3.1416  -2.356 SET_END
+		SET littleLeft	-2.75    -2.356   -2.356   -2.1	  SET_END
+		SET medium	-2.356   -1.57    -1.57	   -0.785 SET_END
+		SET littleRight  -1.05   -0.786   -0.785   -0.39  SET_END
+		SET muchRight   -0.785      0        0        0   SET_END	
+	UNIVERSE_END
+
+	UNIVERSE angle
+		SET largeLeft  -1.57  -1.57  -1.57  -0.785  SET_END
+		SET smallLeft  -1.05  -0.52  -0.52       0  SET_END
+		SET medium     -0.2       0      0     0.2  SET_END
+		SET smallRight	 0     0.52   0.52    1.05  SET_END
+		SET largeRight  0.785  1.57   1.57    1.57  SET_END
+	UNIVERSE_END
+
+	UNIVERSE deviationLeft 
+		SET largeLeft 	 -350   -350   -350   -150 	SET_END
+		SET mediumLeft   -200   -125   -125    -50 	SET_END
+		SET smallLeft 	  -75      0      0      0 	SET_END
+		SET smallRight      0      0      0     75 	SET_END	
+		SET mediumRight    50    125    125    200 	SET_END		
+		SET largeRight 	  150    350    350    350 	SET_END	
+	UNIVERSE_END
+	
+	VARIABLE steeringAngle angle in 		VARIABLE_END
+	VARIABLE deviation deviationLeft out 		VARIABLE_END
+	VARIABLE inclination inclinationAngle out 	VARIABLE_END
+
+
+
+	RULE R1
+	IF ( deviation IS largeLeft AND ( inclination IS littleLeft OR inclination IS medium OR inclination IS muchLeft ) ) OR  ( deviation IS largeLeft  AND inclination IS littleRight ) 
+	THEN steeringAngle IS largeRight
+	RULE_END
+
+
+
+	RULE R2
+	IF ( ( deviation IS largeLeft OR deviation IS mediumLeft ) AND inclination IS muchRight ) OR ( ( deviation IS smallLeft AND inclination IS littleRight ) OR ( deviation IS smallRight AND inclination IS medium ) )
+	THEN steeringAngle IS smallLeft
+	RULE_END
+
+
+
+	RULE R3
+	IF ( ( deviation IS mediumLeft OR deviation IS smallLeft ) AND inclination IS muchLeft ) OR ( deviation IS smallLeft AND inclination IS muchRight )
+	THEN steeringAngle IS medium
+	RULE_END
+
+
+	RULE R4
+	IF ( ( deviation IS smallRight AND inclination IS muchLeft ) OR ( ( deviation IS mediumRight OR deviation IS largeRight ) AND inclination IS muchLeft ) ) OR ( ( deviation IS mediumLeft OR deviation IS smallLeft ) AND ( inclination IS littleLeft OR inclination IS medium )  ) 
+	THEN steeringAngle IS smallRight
+	RULE_END
+
+
+	RULE R5
+	IF  ( ( ( deviation IS mediumRight AND ( inclination IS littleRight OR inclination IS muchRight ) ) OR deviation IS largeRight AND ( inclination IS littleRight OR inclination IS muchRight ) ) OR ( deviation IS smallRight AND ( inclination IS littleRight OR inclination IS muchRight ) ) ) OR ( ( ( deviation IS mediumRight OR deviation IS largeRight ) AND ( inclination IS littleLeft OR inclination IS medium ) )  OR ( deviation IS smallRight AND inclination IS littleLeft )  )
+	THEN steeringAngle IS largeLeft
+	RULE_END
+
+
+
+	
+
+KB_END

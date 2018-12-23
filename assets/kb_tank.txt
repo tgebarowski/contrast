@@ -1,0 +1,34 @@
+KB
+
+	UNIVERSE level
+		SET low       0   0   0  50  SET_END
+		SET medium    0  50  50 100  SET_END
+		SET high     50 100 100 100  SET_END
+	UNIVERSE_END
+
+	UNIVERSE flux
+		SET little	 0  0  0  8  SET_END
+		SET normal 	 0  8  8 16  SET_END
+		SET much         8 16 16 16  SET_END
+	UNIVERSE_END
+
+	VARIABLE height	level in 	VARIABLE_END
+	VARIABLE inFlux	flux	out 	VARIABLE_END
+
+	RULE R1 
+	IF height IS low
+	THEN inFlux IS much
+	RULE_END
+	
+	RULE R2  
+	IF height IS medium
+	THEN inFlux IS normal
+	RULE_END
+	
+	RULE R3 
+	IF height IS high
+	THEN inFlux IS little
+	RULE_END
+	
+KB_END
+

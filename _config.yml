@@ -1,10 +1,10 @@
-title: ""
-author: ""
+title: "Tomasz Gebarowski"
+author: "Tomasz Gebarowski"
 description: ""
 
 # Jekyll settings
 permalink: /:title/          # see https://jekyllrb.com/docs/permalinks/
-paginate: 2                  # number of articles per page, remove to disable pagination
+paginate: 5                  # number of articles per page, remove to disable pagination
 excerpt_separator: "\n\n\n"  # indicates the end of the excerpt by two blank lines
 
 # Theme settings
@@ -18,17 +18,27 @@ navigation:                  # show navigation links in the header
   - index.html
   - archive.md
   - about.md
+  - publications.md
+  - talks.md
 
 #icons:                       # show icons in the header, for all possible icons see http://fontawesome.io/icons/
-#  envelope: ""
-#  github: ""
-#  feed: ""
+github: "https://github.com/tgebarowski"
+twitter: "https://twitter.com/tgebarowski"
+linkedin: "https://www.linkedin.com/in/tomaszgebarowski/"
+stackoverflow: "https://stackoverflow.com/users/2455652/tgebarowski"
 
 comments:                    # embed disqus or isso comments
 #  disqus: ""
 #  isso: ""
 
+jekyll_analytics:
+  GoogleAnalytics:          # Add, if you want to track with Google Analytics
+    id: UA-131281312-1          # Required - replace with your tracking id
+    anonymizeIp: false      # Optional - Default: false - set to true for anonymized tracking
+
+
 plugins: 
  - jekyll-feed
  - jekyll-paginate
  - jekyll-default-layout
+ - jekyll-analytics
