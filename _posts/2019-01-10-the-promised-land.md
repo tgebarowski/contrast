@@ -13,7 +13,7 @@ tags:
   - Async
   - Await
 ---
-Asynchronous operations are impossible to avoid in almost every modern application. Each time you interact with network, database, filesystem or UI, some asynchronous operation is involved. iOS provides many mechanisms to provide asynchronousness including GCD, NSOperation, NSNotification and encourages design patterns like delegate and callbacks that promotes asynchronousness. Unfortunatelly writing asynchronouse code in Swift is not always very clean, especially when implementing more complex chains of operations.
+Asynchronous operations are impossible to avoid in almost every modern application. Each time you interact with network, database, filesystem or UI, some asynchronous operation is involved. iOS provides many mechanisms to provide asynchronousness including GCD and NSOperationQueue and encourages design patterns like delegate and callbacks that promotes asynchronousness. Unfortunatelly writing asynchronouse code in Swift is not always very clean, especially when implementing more complex chains of operations.
 
 <!--more-->
 
@@ -110,7 +110,7 @@ A potential solution, could be using NSOperation and NSOperationQueue to represe
 
 ### Why not using something battle tested in other languages?
 
-Mature languages like Python, C#, Scala or JavaScript have already solved that problem by offering mechanisms such as await/async or co-routines. Unfortunately Swift is not yet providing any of that and for sure this is one of the most expected features of new Swift version. Chris Lattner has already addressed it in his [Swift Concurrency Manifesto](https://gist.github.com/lattner/31ed37682ef1576b16bca1432ea9f782) but its certain that it will take some time until we can fully enjoy some kind of first-class concurrency model in Swift. 
+Mature languages like Go, C#, Scala or JavaScript have already solved that problem by offering mechanisms such as await/async or co-routines. Unfortunately Swift is not yet providing any of that and for sure this is one of the most expected features of new Swift version. Chris Lattner has already addressed it in his [Swift Concurrency Manifesto](https://gist.github.com/lattner/31ed37682ef1576b16bca1432ea9f782) but its certain that it will take some time until we can fully enjoy some kind of first-class concurrency model in Swift. 
 
 Fortunatelly one may leverage some benefits of await/async in current Swift (i.e. 4.2) version and use pattern called promises. So what the promises are? They describe an object that acts as a wrapper for a result that is not yet delivered, usually because the computation of its value is yet incomplete. There is no standard implementation of promises pattern in Swift, but we could use a 3rd party library or implement a simple promise API from scratch. What's interesting promises were originally offered as third party libraries in JavaScript too, but later starting from ECMAScript 6 they've become a native feature of language itself and together with await/async they offer a first-class concurrency model. This has encouraged me to start incorporating 3rd party promises in Swift code as the code using promises is easier to migrate to await/async mechanism.  
 
@@ -142,10 +142,10 @@ class ServiceD {
 ``` 
 
 Each requests is wrapped with an object of a Promise type that will either deliver some data or fail. Each Promise provides at least two methods then() and catch().
-With the first one we provide a closure that is triggered when operation is successful, second one is used to provide a closure for error handling. The then() can return another Promise so that we can chain promises and catch the error in one place.
+With the first one we provide a closure that is triggered when operation is successful, second one is used to provide a closure for error handling. The then() method can return another Promise so that we can chain promises and catch the error in one place.
 
 
-Note, that I used a 3rd party [promises](https://github.com/khanlou/Promise) library written by Soroush Khanlou.
+Note, that I used a 3rd party [promises](https://github.com/khanlou/Promise) library written by Soroush Khanlou. *Promises* are often described together with *Futures*. Usually a *Promise* gets constructed and then it is returned as a *Future*, to be used to extract information when available. The difference is that a *Future* is a read-only container for a result that does not yet exist, while a *Promise* can be written. Promises can exist without Futures and for the sake of simplicity I decided to base my examples only on promises.
 
 
 What are the benefits?
