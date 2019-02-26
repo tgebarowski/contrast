@@ -15,7 +15,7 @@ tags:
   - Swift
 ---
 
-Tracking user behaviour and gathering analytics is very important not only from marketing purposes but also to improve the user experience. Especially when having limited resources it allows to concentrate on most important user paths. I've worked on several mobile applications, some of them I've written from scratch, others were maintained by me, for some I did code reviews only. Most of those apps had one thing in common, they implemented some kind of analytics (Firebase, Gemius, Mixpanel or proprietary) which was hard to maintain and seemed like it was there only to satisfy some business requirement. Added without broader perspective, just to satisfy current needs.
+Tracking user behaviour and gathering analytics is very important not only for marketing purposes but also to improve the user experience. Especially when having limited resources it allows to concentrate on most important user paths. I've worked on several mobile applications, some of them I've written from scratch, others were maintained by me, for some I did code reviews only. Most of those apps had one thing in common, they implemented some kind of analytics (Firebase, Gemius, Mixpanel or proprietary) which was hard to maintain and seemed like it was there only to satisfy some business requirement. Added without broader perspective, just to satisfy current needs.
 
 <!--more-->
 
