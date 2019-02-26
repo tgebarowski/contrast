@@ -33,10 +33,10 @@ Let us imagine that we have a Tracking class and several helper methods that are
 ```swift
 
 enum EventType: String {
-offerClick
-offerShow
-offerBid
-offerDismiss
+   case offerClick
+   case offerShow
+   case offerBid
+   case offerDismiss
 ...
 }
 
