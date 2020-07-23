@@ -6,6 +6,11 @@ author: tomasz
 layout: page
 ---
 
+2019
+
+* 26.10.2019 - Breaking the monolith: Modularyzacja (EN), [Mobilization 9](https://www.youtube.com/watch?v=PKpYjEN9v9Y), Lodz
+* 30.09.2019 - Breaking the monolith: Modularyzacja (PL), [Allegro Tech Talk](https://www.meetup.com/allegrotech/events/264923060/), Poznan
+
 2018
 
 * 30.03.2018 - Unmaintainable code - iOS developer perspective, [CocoaHeads](https://www.meetup.com/Lodz-w-iOS-luje/events/248766075/) (Łódź wiOSłuje), Lodz
